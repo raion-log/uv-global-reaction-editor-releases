@@ -1,0 +1,5 @@
+*.exe
+*.msi
+*.sha256
+.DS_Store
+Thumbs.db
