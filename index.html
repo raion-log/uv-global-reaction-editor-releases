@@ -2,13 +2,198 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0;url=https://raion-log.github.io/uv/">
-<link rel="canonical" href="https://raion-log.github.io/uv/">
-<title>UV 허브로 이동</title>
-<style>body{background:#0b1120;color:#e8ecf7;font:16px/1.7 "Malgun Gothic",sans-serif;
-display:grid;place-items:center;min-height:100vh;margin:0}
-a{color:#7b93ff}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UV 글로벌 반응 편집기 — 다운로드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1526'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='14' font-weight='bold' fill='%237b93ff' text-anchor='middle'%3EUV%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* ★이 페이지는 이 저장소가 **혼자** 배포한다. 허브(raion-log/uv)의 uv.css 를 끌어다
+   쓰지 않는다 — 남의 저장소에 스타일을 의존하면 그쪽이 바뀔 때 여기가 조용히 깨진다.
+   생김새만 UV 시리즈와 맞춘다(짙은 남색 도트 무대). */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:#0b1120 radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:24px 24px;
+  color:#e8ecf7;
+  font:16px/1.7 "Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;
+  min-height:100vh;word-break:keep-all;
+}
+main{max-width:880px;margin:0 auto;padding:64px 24px 96px}
+.back{display:inline-block;color:#8b96b4;text-decoration:none;font-size:.85rem;
+      margin-bottom:18px;border-bottom:1px dashed #3a4668}
+.back:hover{color:#c3cbe2}
+.brand{display:flex;align-items:baseline;gap:14px;margin-bottom:10px;flex-wrap:wrap}
+.brand .uv{font-family:"Nanum Myeongjo",serif;font-weight:800;font-size:3rem;line-height:1;
+           color:#fff;text-shadow:0 0 34px rgba(123,147,255,.55)}
+.brand small{color:#8b96b4;font-size:.95rem;letter-spacing:.06em;font-weight:700}
+.tag{color:#aab4cf;max-width:600px;margin:0 0 34px}
+.section{letter-spacing:.06em;font-size:.75rem;font-weight:700;color:#7b93ff;margin:38px 0 14px}
+
+.dl{display:inline-block;background:#5b76f7;color:#fff;text-decoration:none;font-weight:700;
+    padding:14px 28px;border-radius:10px;font-size:1.04rem;box-shadow:0 8px 26px rgba(91,118,247,.38)}
+.dl:hover{background:#6d85ff}
+.alt{margin-left:14px;color:#8b96b4;font-size:.85rem;text-decoration:none;border-bottom:1px dashed #3a4668}
+.alt:hover{color:#c3cbe2}
+
+.meta{border:1px solid #26314f;border-radius:12px;overflow:hidden;margin-top:20px}
+.meta div{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:11px 16px;font-size:.86rem}
+.meta div+div{border-top:1px solid #222c47}
+.meta .k{color:#8b96b4}
+.meta code{font-family:Consolas,"D2Coding",monospace;color:#9fb0d8;word-break:break-all;font-size:.92em}
+.fine{margin-top:18px;color:#77809b;font-size:.82rem;line-height:1.85}
+.fine b{color:#c3cbe2}
+
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{text-align:left;font-size:.76rem;font-weight:700;color:#8b96b4;padding:0 14px 9px 0;
+   border-bottom:1.5px solid #3a4668}
+th.rec{color:#7b93ff;background:rgba(123,147,255,.09);padding-left:14px}
+td{padding:12px 14px 12px 0;border-bottom:1px solid #222c47;vertical-align:top;color:#c3cbe2}
+td.rec{background:rgba(123,147,255,.09);padding-left:14px;color:#fff;font-weight:600}
+tr:last-child td{border-bottom:0}
+td.item{font-weight:700;white-space:nowrap;color:#e8ecf7}
+td.hit{color:#f0938a}
+.small{font-size:.88rem;color:#9aa5c0}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.col{border:1px solid #26314f;border-radius:14px;padding:20px 22px;background:rgba(13,21,38,.55)}
+.col.yes{border-top:2px solid #4fbe8b}
+.col.no{border-top:2px solid #e0796f}
+.col h3{margin:0 0 14px;font-size:.98rem}
+.col.yes h3{color:#4fbe8b}
+.col.no h3{color:#e0796f}
+.col ul{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+.col li{display:grid;grid-template-columns:14px 1fr;gap:9px;font-size:.9rem;line-height:1.6;color:#c3cbe2}
+.col i{font-style:normal;font-weight:700}
+.col.yes i{color:#4fbe8b}
+.col.no i{color:#e0796f}
+.col b{color:#fff;font-weight:600}
+.col small{display:block;color:#8b96b4;font-size:.8rem;line-height:1.55}
+
+.gate{margin-top:22px;border:1px solid #3a4668;border-left:3px solid #7b93ff;
+      border-radius:0 14px 14px 0;padding:18px 22px;background:rgba(123,147,255,.07)}
+.gate h3{margin:0 0 4px;font-size:.98rem;color:#fff}
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.way{border:1px solid #2b3757;border-radius:10px;padding:12px 15px;background:rgba(13,21,38,.6)}
+.way span{display:block;color:#8b96b4;font-size:.76rem;margin-bottom:2px}
+.way b{color:#fff;font-size:.94rem}
+.steps{margin:0;padding-left:20px;color:#c3cbe2;line-height:1.9}
+.steps b{color:#fff}
+footer{margin-top:64px;color:#5d6781;font-size:.78rem}
+footer a{color:#7b8199}
+@media (max-width:700px){
+  main{padding:44px 18px 64px}
+  .brand .uv{font-size:2.4rem}
+  .split,.ways{grid-template-columns:1fr}
+}
+</style>
 </head>
-<body><p>다운로드 페이지가 이사했습니다 →
-<a href="https://raion-log.github.io/uv/">raion-log.github.io/uv</a></p></body>
+<body>
+<main>
+  <a class="back" href="https://raion-log.github.io/uv/">← UV 제품 허브</a>
+
+  <div class="brand"><span class="uv">UV</span><small>글로벌 반응 편집기</small></div>
+  <p class="tag">YouTube 반응 영상을 국가별 자긍심 콘텐츠로 재구성하는 Windows 편집기.
+    자막 검사부터 선별·번역·나레이션·렌더·CapCut 초안까지 한 번에 완주합니다.</p>
+
+  <a class="dl" href="https://github.com/raion-log/uv-global-reaction-editor-releases/releases/download/v1.2.3/UV-Global-Reaction-Editor_1.2.3_x64-setup.exe">1.2.3 설치기 다운로드</a>
+  <a class="alt" href="https://github.com/raion-log/uv-global-reaction-editor-releases/releases">전체 버전 목록</a>
+
+  <div class="meta">
+    <div><span class="k">파일</span><code>UV-Global-Reaction-Editor_1.2.3_x64-setup.exe</code></div>
+    <div><span class="k">크기</span><span>639MB (669,866,066 바이트)</span></div>
+    <div><span class="k">게시일</span><span>2026-08-31</span></div>
+    <div><span class="k">SHA-256</span><code>536cfde97eb8ed9fbba14f686ebd7cfdc1bbc38ea4febb6783df6e788c84e29d</code></div>
+  </div>
+
+  <p class="fine">이 판부터 <b>로그인이 필요합니다</b> — 가입 후 관리자 승인을 받아야 사용할 수 있습니다.<br>
+    코드서명 전 내부 테스트 후보라 설치할 때 Windows 경고가 표시될 수 있습니다.</p>
+
+  <!-- ───────────── 내 PC로 되나요 ───────────── -->
+  <p class="section">내 PC로 되나요</p>
+  <p class="small">최소 사양이면 프로그램은 그대로 돌아갑니다. 대신
+    <b style="color:#fff">자막이 없는 유튜브 영상을 쓸 수 없습니다.</b>
+    오른쪽 끝은 최소 사양만 넘겼을 때 그 항목이 어떻게 되는지입니다.</p>
+
+  <div class="tablewrap">
+    <table>
+      <tr><th>항목</th><th>최소</th><th class="rec">권장</th><th>최소 사양이면</th></tr>
+      <tr><td class="item">운영체제</td><td>윈도우 10 (64비트)</td>
+          <td class="rec">윈도우 11 (64비트)</td><td>차이 없습니다</td></tr>
+      <tr><td class="item">CPU</td><td>4코어</td>
+          <td class="rec">12코어</td><td class="hit">자막 없는 영상을 못 씁니다</td></tr>
+      <tr><td class="item">메모리</td><td>8GB</td>
+          <td class="rec">16GB</td><td class="hit">자막 없는 영상을 못 씁니다</td></tr>
+      <tr><td class="item">그래픽카드</td><td>없어도 됩니다</td>
+          <td class="rec">NVIDIA · 카드 메모리 8GB</td><td>영상 만드는 시간이 늘어납니다</td></tr>
+      <tr><td class="item">저장 공간</td><td>5GB</td>
+          <td class="rec">50GB</td><td>영상 몇 편마다 정리해야 합니다</td></tr>
+    </table>
+  </div>
+
+  <p class="small" style="margin-top:14px">「12코어」는 작업 관리자(<b>Ctrl+Shift+Esc</b>) → 성능 탭에
+    <b>논리 프로세서</b>로 나오는 숫자입니다. 요즘 CPU는 코어 하나가 두 몫을 해서
+    <b>6코어 CPU가 보통 12로 나옵니다.</b></p>
+
+  <p class="section">최소 사양만 넘겼다면</p>
+  <div class="split">
+    <div class="col yes">
+      <h3>그대로 됩니다</h3>
+      <ul>
+        <li><i>✓</i><div>프로그램 실행과 모든 화면</div></li>
+        <li><i>✓</i><div><b>자막이 있는 영상</b> 편집
+          <small>유튜브 영상 대부분에 자막이 있습니다</small></div></li>
+        <li><i>✓</i><div>차트·지도 <b>자료 화면 만들기</b></div></li>
+        <li><i>✓</i><div>번역 · 검수 · 나레이션 · 음성</div></li>
+        <li><i>✓</i><div><b>완성 영상 품질은 똑같습니다</b>
+          <small>1920×1080 · 30fps — 사양과 무관합니다</small></div></li>
+      </ul>
+    </div>
+    <div class="col no">
+      <h3>안 됩니다</h3>
+      <ul>
+        <li><i>✕</i><div><b>자막이 없는 영상</b>
+          <small>말을 글로 옮기는 작업을 PC가 직접 해야 하는데, 그게 무겁습니다.
+            넣으면 작업이 반려됩니다</small></div></li>
+        <li><i>✕</i><div>그래픽카드로 <b>빠르게 만들기</b>
+          <small>CPU가 대신합니다 — 결과물은 같고 시간만 더 걸립니다</small></div></li>
+        <li><i>✕</i><div>작업을 <b>많이 쌓아 두기</b>
+          <small>영상 1편에 평균 0.5GB</small></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gate">
+    <h3>자막 없는 영상을 쓰려면 — 둘 중 하나만 있으면 됩니다</h3>
+    <p class="small" style="margin:0">그래픽카드가 없어도 CPU와 메모리가 넉넉하면 됩니다.</p>
+    <div class="ways">
+      <div class="way"><span>그래픽카드로</span><b>NVIDIA · 카드 메모리 8GB 이상</b></div>
+      <div class="way"><span>CPU로</span><b>12코어 이상 + 메모리 16GB 이상</b></div>
+    </div>
+  </div>
+
+  <p class="small" style="margin-top:18px">설치한 뒤 <b>⚙ 설정 → 💻 내 PC 사양</b> 탭을 열면
+    지금 쓰는 PC를 읽어 위 권장 사양과 나란히 놓고 판정해 줍니다.
+    CUDA를 따로 설치하실 필요는 없고, NVIDIA 그래픽카드를 쓰신다면
+    <b>그래픽 드라이버만</b> 최신으로 맞춰 주세요.</p>
+
+  <!-- ───────────── 설치와 업데이트 ───────────── -->
+  <p class="section">설치와 업데이트</p>
+  <ol class="steps">
+    <li>받은 <b>설치기(.exe)</b>를 실행합니다.</li>
+    <li>코드서명 전 후보라 <b>「Windows의 PC 보호」 경고</b>가 뜰 수 있습니다 —
+      <b>추가 정보 → 실행</b>을 누르면 설치가 이어집니다.</li>
+    <li>설치가 끝나면 바탕화면 아이콘으로 실행합니다.</li>
+    <li>처음 실행할 때 필요한 도구를 <b>자동으로 내려받습니다.</b> 인터넷 연결이 필요합니다.</li>
+    <li><b>가입 후 관리자 승인</b>을 받아야 사용할 수 있습니다.</li>
+  </ol>
+  <p class="small" style="margin-top:16px"><b>자동 업데이트는 아직 없습니다.</b>
+    새 판이 나오면 이 페이지에서 설치기를 다시 받아 <b>기존 설치 위에 그대로</b> 실행하세요.
+    먼저 지우지 않으셔도 되고, 설정과 작업물은 남습니다.</p>
+
+  <footer>© RAION · <a href="https://raion-log.github.io/uv/">UV 제품 허브</a>
+    · <a href="https://github.com/raion-log">github.com/raion-log</a></footer>
+</main>
+</body>
 </html>
