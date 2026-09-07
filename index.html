@@ -80,6 +80,13 @@ td.hit{color:#f0938a}
 .way b{color:#fff;font-size:.94rem}
 .steps{margin:0;padding-left:20px;color:#c3cbe2;line-height:1.9}
 .steps b{color:#fff}
+
+/* 설치 안내 영상 — 표지만 먼저 싣고, 누를 때 받는다(preload=none). */
+.guide{margin:4px 0 24px}
+.guide video{display:block;width:100%;border:1px solid #26314f;border-radius:14px;
+             background:#0b1120;box-shadow:0 10px 34px rgba(0,0,0,.34)}
+.guide .cap{margin:11px 0 0;color:#8b96b4;font-size:.84rem}
+.guide .cap b{color:#c3cbe2}
 footer{margin-top:64px;color:#5d6781;font-size:.78rem}
 footer a{color:#7b8199}
 @media (max-width:700px){
@@ -180,6 +187,17 @@ footer a{color:#7b8199}
 
   <!-- ───────────── 설치와 업데이트 ───────────── -->
   <p class="section">설치와 업데이트</p>
+
+  <div class="guide">
+    <video controls preload="none" playsinline poster="install-guide-poster.jpg">
+      <source src="install-guide.mp4" type="video/mp4">
+      이 브라우저에서는 영상이 재생되지 않습니다 —
+      <a href="install-guide.mp4">영상 내려받기</a>
+    </video>
+    <p class="cap"><b>설치 안내 영상 · 1분 37초</b> — 받기 · 설치 · 가입까지.
+      소리 없이 자막으로 진행되니 조용한 곳에서도 보실 수 있습니다.</p>
+  </div>
+
   <ol class="steps">
     <li>받은 <b>설치기(.exe)</b>를 실행합니다.</li>
     <li>아직 코드서명 전이라 <b>「Windows의 PC 보호」 경고</b>가 뜰 수 있습니다 —
