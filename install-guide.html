@@ -70,6 +70,18 @@ td{padding:11px 12px 11px 0;border-bottom:1px solid #222c47;vertical-align:top;c
 td b{color:#fff}
 tr:last-child td{border-bottom:0}
 
+
+/* 「추가로 알면 좋은 것」 — 주제마다 카드로 끊는다. 한 덩어리로 흐르면 눈이 길을 잃는다. */
+.extra{border:1px solid #2b3757;border-radius:14px;background:rgba(13,21,38,.55);
+       padding:24px 26px;margin:20px 0}
+.extra .top{display:flex;align-items:flex-start;gap:12px;margin:0 0 6px}
+.extra .top::before{content:"";flex:0 0 auto;width:5px;height:26px;border-radius:3px;
+                    background:#7b93ff;margin-top:3px}
+.extra .top h3{margin:0;font-size:1.16rem;color:#fff;line-height:1.4}
+/* 하위 라벨은 본문보다 흐리게 하지 않는다 — 위계가 거꾸로 보인다. */
+.lab{margin:22px 0 8px;font-size:.82rem;font-weight:700;letter-spacing:.07em;color:#8fa6ff}
+.extra figure{margin:16px 0 4px}
+.extra ol,.extra ul{padding-left:20px}
 footer{margin-top:60px;padding-top:22px;border-top:1px solid #222c47;
        color:#5d6781;font-size:.78rem}
 footer a{color:#7b8199}
@@ -158,13 +170,15 @@ footer a{color:#7b8199}
   <h2 style="border-top:2px solid #3a4668">추가로 알면 좋은 것</h2>
   <p class="small">아래는 <b>드물게</b> 생기는 경우입니다. 위 두 단계로 설치가 끝나셨다면 읽지 않으셔도 됩니다.</p>
 
-<h3 style="margin-top:30px">받을 때 「일반적으로 다운로드되지 않는 파일」이라고 나오면</h3>
+  <section class="extra">
+    <div class="top"><h3>받을 때 「일반적으로 다운로드되지 않는 파일」이라고 나오면</h3></div>
+
   <p class="small">아직 이 경우가 보고된 적은 없습니다. 혹시 겪으시면 아래대로 하시면 됩니다.</p>
   <p>받는 도중 브라우저가 이런 뜻의 안내를 띄울 수 있습니다.</p>
   <div class="quote">「일반적으로 다운로드되지 않는 파일입니다」 · 「이 파일은 안전하지 않을 수 있습니다」</div>
   <p>파일이 크고 아직 배포 이력이 적어서 나오는 안내입니다.
     <b>문구와 단추 이름은 브라우저마다 다릅니다.</b></p>
-  <h3 style="color:#aab4cf;font-size:.94rem">대처 — 받은 파일 목록에서 「계속」을 고릅니다</h3>
+  <p class="lab">대처 — 받은 파일 목록에서 「계속」을 고릅니다</p>
   <ol>
     <li>브라우저 <b>오른쪽 위</b>의 <b>아래쪽 화살표(↓) 모양 아이콘</b>을 누릅니다.
       받은 파일 목록이 열립니다
@@ -177,8 +191,11 @@ footer a{color:#7b8199}
   </ol>
   <p class="small">이 화면이 실제로 나오면 <b>사진으로 찍어 강의 카톡방에 남겨 주세요.</b>
     다음 분들을 위해 이 안내에 실제 화면을 넣겠습니다.</p>
+  </section>
 
-  <h3 style="margin-top:30px">「Microsoft Store」 글자가 보이면</h3>
+  <section class="extra">
+    <div class="top"><h3>「Microsoft Store」 글자가 보이면</h3></div>
+
   <figure>
     <img src="guide/02-스토어제한.jpg" alt="Microsoft Store에서 확인된 앱만 설치할 수 있습니다">
     <figcaption>재현 그림 — 실제 화면과 배치가 다를 수 있습니다</figcaption>
@@ -189,7 +206,7 @@ footer a{color:#7b8199}
     <img src="guide/03-설정바꾸기.jpg" alt="설정 → 앱 → 고급 앱 설정 → 앱을 가져올 위치 선택">
     <figcaption>재현 그림 — 설정에서 바꿀 곳</figcaption>
   </figure>
-  <h3 style="color:#aab4cf;font-size:.94rem">대처</h3>
+  <p class="lab">대처</p>
   <ol>
     <li>키보드에서 <b>Windows 키 + I</b> — 설정 창이 열립니다</li>
     <li>왼쪽에서 <b>앱</b> 을 누릅니다</li>
@@ -197,7 +214,7 @@ footer a{color:#7b8199}
     <li>맨 위 <b>「앱을 가져올 위치 선택」</b> 을 <b>「아무 곳에서나」</b> 로 바꿉니다</li>
     <li>설정 창을 닫고 설치 파일을 다시 실행합니다</li>
   </ol>
-  <h3 style="color:#aab4cf;font-size:.94rem">이렇게 해도 안 될 때</h3>
+  <p class="lab">이렇게 해도 안 될 때</p>
   <ul>
     <li><b>3번 「고급 앱 설정」이 안 보이면</b> — Windows 버전에 따라 <b>앱 → 앱 및 기능</b> 안에 있습니다</li>
     <li><b>회색으로 잠겨 바꿀 수 없으면</b> — 회사·학교에서 관리하는 PC 입니다. 해당 조직의 IT 담당자를 통해야 합니다</li>
@@ -205,8 +222,11 @@ footer a{color:#7b8199}
       Microsoft Store 에서 「S 모드 해제」(무료)를 해야 설치할 수 있는데,
       <b>한 번 해제하면 되돌릴 수 없습니다.</b> 진행 전에 담당자와 확인해 주세요</li>
   </ul>
+  </section>
 
-  <h3 style="margin-top:34px">받은 파일이 보이지 않을 때</h3>
+  <section class="extra">
+    <div class="top"><h3>받은 파일이 보이지 않을 때</h3></div>
+
   <p>다운로드한 파일이 목록에도 폴더에도 없으면, 백신이 따로 보관(격리)한 경우일 수 있습니다.</p>
   <div class="warn">
     <b>백신 설정을 바꾸지 마세요.</b><br>
@@ -217,8 +237,11 @@ footer a{color:#7b8199}
       <li>백신이 띄운 <b>알림 화면</b> — 사진으로 찍어 주시면 가장 좋습니다</li>
     </ul>
   </div>
+  </section>
 
-  <h3 style="margin-top:34px">설치 파일이 맞는지 확인하기 (선택)</h3>
+  <section class="extra">
+    <div class="top"><h3>설치 파일이 맞는지 확인하기 (선택)</h3></div>
+
   <p>받은 파일이 배포된 것과 같은지 직접 확인하실 수 있습니다.</p>
   <ol>
     <li>설치 파일이 있는 폴더에서 <b>주소창에 <code>powershell</code></b> 을 입력하고 Enter</li>
@@ -227,8 +250,9 @@ footer a{color:#7b8199}
 <pre><code>Get-FileHash -Algorithm SHA256 -LiteralPath ".\UV-Global-Reaction-Editor_1.2.8_x64-setup.exe"</code></pre>
   <p>나온 값이 아래와 같으면 정상입니다.</p>
 <pre><code class="hash">b62f7363dc2b161dc946023ec7ae0c41cf2064333b383295d47a5fbbff28e512</code></pre>
+  </section>
 
-  <footer>© RAION · <a href="./">다운로드 페이지</a>
+<footer>© RAION · <a href="./">다운로드 페이지</a>
     · <a href="https://raion-log.github.io/uv/">UV 제품 허브</a></footer>
 </main>
 </body>
