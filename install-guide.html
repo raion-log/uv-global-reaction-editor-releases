@@ -49,6 +49,7 @@ figure{margin:18px 0 6px}
 figure img{display:block;width:100%;max-width:620px;margin:0 auto;
            border:1px solid #26314f;border-radius:12px;
            box-shadow:0 10px 30px rgba(0,0,0,.34)}
+figure img.wide{max-width:100%}
 figcaption{margin-top:9px;color:#77809b;font-size:.8rem;text-align:center}
 
 .warn{margin:22px 0;border:1px solid #6b4a46;border-left:3px solid #e0796f;
@@ -83,6 +84,16 @@ tr:last-child td{border-bottom:0}
 .lab{margin:22px 0 8px;font-size:.82rem;font-weight:700;letter-spacing:.07em;color:#8fa6ff}
 .extra figure{margin:16px 0 4px}
 .extra ol,.extra ul{padding-left:20px}
+/* 탭 — 「설치」와 「쓰면서 알아둘 것」을 나눈다. 설치만 보러 온 분이 저장 얘기에 길을 잃지 않게. */
+.tabs{display:flex;gap:6px;margin:0 0 8px;border-bottom:1px solid #2b3757}
+.tabs button{appearance:none;background:none;border:0;border-bottom:3px solid transparent;
+  color:#8b96b4;font:inherit;font-size:.98rem;font-weight:700;padding:10px 16px 12px;cursor:pointer;margin-bottom:-1px}
+.tabs button:hover{color:#c3cbe2}
+.tabs button[aria-selected="true"]{color:#fff;border-bottom-color:#7b93ff}
+.tabpane[hidden]{display:none}
+.where{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:14px 0;font-size:.94rem}
+.where dt{color:#8fa6ff;font-weight:700}
+.where dd{margin:0;color:#c3cbe2}
 footer{margin-top:60px;padding-top:22px;border-top:1px solid #222c47;
        color:#5d6781;font-size:.78rem}
 footer a{color:#7b8199}
@@ -105,6 +116,12 @@ footer a{color:#7b8199}
   <p class="lede">설치할 때 나올 수 있는 안내 화면과 그 대처를 순서대로 정리했습니다.</p>
   <p class="meta">대상 Windows 10 · 11 (64비트) · 판 번호 1.3.0 · 설치 파일 639MB</p>
 
+  <div class="tabs" role="tablist">
+    <button role="tab" id="tab-install" aria-controls="pane-install" aria-selected="true">설치하기</button>
+    <button role="tab" id="tab-storage" aria-controls="pane-storage" aria-selected="false">저장공간 관리</button>
+  </div>
+
+  <div class="tabpane" id="pane-install" role="tabpanel" aria-labelledby="tab-install">
 
   <h2><span class="num">1</span>실행할 때 — 파란 창 「Windows의 PC 보호」</h2>
   <p>받은 설치 파일을 실행하면 <b>대부분 이 파란 창이 나옵니다.</b>
@@ -233,9 +250,57 @@ footer a{color:#7b8199}
   <p>나온 값이 아래와 같으면 정상입니다.</p>
 <pre><code class="hash">47249cd54a996ef6639a5d71a06cafdb2bd56313c4b2592a3d38eb481492c3d2</code></pre>
   </section>
+  </div>
+
+  <!-- ★저장공간 탭 — 수강생 질문(쌓인 영상 정리)에 답한다. 확실한 것 둘만 — 어디 있나 · 앱 안에서 지우기 (담당자 2026-10-15).
+       C→D 옮기기·이미 옮긴 뒤 다시 연결하기는 넣지 않는다. -->
+  <div class="tabpane" id="pane-storage" role="tabpanel" aria-labelledby="tab-storage" hidden>
+
+  <h2><span class="num">1</span>만든 영상은 「동영상」 폴더에 있습니다</h2>
+  <p>파일 탐색기를 열고 왼쪽에서 <b>「동영상」</b>을 누르세요. 영상 한 편마다 <b>「날짜_번호_제목」 폴더</b>가 하나씩 생깁니다.</p>
+  <figure>
+    <img src="guide/21-동영상폴더.jpg" alt="파일 탐색기의 동영상 폴더 안에 영상마다 날짜_번호_제목 폴더가 있는 모습">
+    <figcaption>재현 그림 — 실제 화면과 모양이 조금 다를 수 있습니다</figcaption>
+  </figure>
+  <div class="warn">
+    <b>이 폴더는 옮기거나 이름을 바꾸지 마세요.</b><br>
+    캡컷이 이 자리에서 영상을 불러옵니다. 옮기면 캡컷에서 영상이 보이지 않습니다.
+  </div>
+
+  <h2><span class="num">2</span>다 쓴 영상은 프로그램에서 지웁니다</h2>
+  <p>공간이 모자라면 탐색기에서 지우지 말고 <b>프로그램 안에서</b> 지우세요. 앱 목록과 캡컷 목록도 함께 정리됩니다.</p>
+  <figure>
+    <img class="wide" src="guide/22-저장공간정리.jpg" alt="설정의 저장공간 탭 — 기간, 두 칸 체크, 고른 것 정리하기 단추">
+    <figcaption>프로그램 화면 — 번호 순서대로 누릅니다</figcaption>
+  </figure>
+  <ol>
+    <li>왼쪽 아래 <b>톱니바퀴(설정)</b> → <b>① 🧹 저장공간</b></li>
+    <li><b>② 기간</b>을 고릅니다 — 「7일 지난 것」이면 완성한 지 일주일이 지난 영상만 지워집니다</li>
+    <li><b>③ 「완성한 작업의 원본 재료」와 「완성한 영상까지」를 둘 다 체크</b>합니다</li>
+    <li><b>④ 「고른 것 정리하기」</b> 를 누릅니다</li>
+    <li>마지막으로 바탕 화면의 <b>휴지통을 비웁니다</b> — 그래야 공간이 실제로 생깁니다</li>
+  </ol>
+  </div>
 
 <footer>© RAION · <a href="./">다운로드 페이지</a>
     · <a href="https://raion-log.github.io/uv/">UV 제품 허브</a></footer>
 </main>
+<script>
+// 탭 — 주소 끝 #storage 로 바로 열 수 있게(카톡방에 「저장공간」 탭 링크를 바로 줄 수 있다)
+(function () {
+  const tabs = [["install", "tab-install", "pane-install"], ["storage", "tab-storage", "pane-storage"]];
+  function show(key) {
+    for (const [k, t, p] of tabs) {
+      const on = k === key;
+      document.getElementById(t).setAttribute("aria-selected", on ? "true" : "false");
+      document.getElementById(p).hidden = !on;
+    }
+  }
+  for (const [k, t] of tabs) {
+    document.getElementById(t).addEventListener("click", () => { history.replaceState(null, "", "#" + k); show(k); });
+  }
+  show(location.hash === "#storage" ? "storage" : "install");
+})();
+</script>
 </body>
 </html>
