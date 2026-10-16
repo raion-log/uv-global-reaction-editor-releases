@@ -94,6 +94,11 @@ tr:last-child td{border-bottom:0}
 .where{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:14px 0;font-size:.94rem}
 .where dt{color:#8fa6ff;font-weight:700}
 .where dd{margin:0;color:#c3cbe2}
+.pathbox{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pathbox pre{flex:1 1 320px;margin:0}
+.pathbox button{appearance:none;border:1px solid #3a4668;background:#16203a;color:#e7ecff;
+  font:inherit;font-size:.9rem;font-weight:700;padding:10px 16px;border-radius:10px;cursor:pointer}
+.pathbox button:hover{background:#1d2a4b}
 footer{margin-top:60px;padding-top:22px;border-top:1px solid #222c47;
        color:#5d6781;font-size:.78rem}
 footer a{color:#7b8199}
@@ -119,6 +124,7 @@ footer a{color:#7b8199}
   <div class="tabs" role="tablist">
     <button role="tab" id="tab-install" aria-controls="pane-install" aria-selected="true">설치하기</button>
     <button role="tab" id="tab-storage" aria-controls="pane-storage" aria-selected="false">저장공간 관리</button>
+    <button role="tab" id="tab-capcut" aria-controls="pane-capcut" aria-selected="false">캡컷에 안 보일 때</button>
   </div>
 
   <div class="tabpane" id="pane-install" role="tabpanel" aria-labelledby="tab-install">
@@ -282,13 +288,64 @@ footer a{color:#7b8199}
   </ol>
   </div>
 
+  <!-- ★캡컷 탭 — 「편집기로 만든 영상이 캡컷 목록에 하나도 안 보인다」(캡컷을 다시 깐 뒤 등). 다시 설치하라는 안내는 틀린 안내다.
+       캡컷은 「설정 → 임시 저장 → 저장」 폴더 안의 프로젝트만 목록에 올린다 — 켜질 때·켜진 동안 그 폴더를 스스로 훑는다
+       (캡컷 9.6.0.4097 실측, 2026-10-16). 그래서 그 칸을 편집기 초안이 있는 폴더로 바꾸고 캡컷을 껐다 켜면 된다. -->
+  <div class="tabpane" id="pane-capcut" role="tabpanel" aria-labelledby="tab-capcut" hidden>
+
+  <p>프로그램에서 <b>「캡컷 열기」</b>를 눌렀는데 캡컷 프로젝트 목록에 영상이 하나도 없을 때 보세요.
+     캡컷을 <b>다시 설치한 뒤</b>에 자주 생깁니다.</p>
+  <div class="tip">
+    <b>프로그램이나 캡컷을 다시 설치하지 않아도 됩니다.</b><br>
+    만든 영상은 그대로 있습니다. 캡컷이 영상이 있는 폴더를 보지 않고 있을 뿐이라, 폴더만 다시 알려 주면 됩니다.
+  </div>
+
+  <h2><span class="num">1</span>캡컷 「설정」을 엽니다</h2>
+  <p>캡컷을 켜고 첫 화면에서 <b>「설정」</b>을 엽니다.</p>
+  <!-- CAPCUT-SETTINGS-FIGURE -->
+
+  <h2><span class="num">2</span>「임시 저장」 → 「저장」 옆 폴더 단추</h2>
+  <figure>
+    <img src="guide/31-캡컷-임시저장.jpg" alt="캡컷 설정 창 — 맨 왼쪽 임시 저장 탭(1)과 저장 칸 오른쪽 폴더 단추(2)">
+    <figcaption>캡컷 설정 화면 — 번호 순서대로 누릅니다 (노란 칸의 경로는 컴퓨터마다 다릅니다)</figcaption>
+  </figure>
+  <ol>
+    <li>맨 왼쪽 <b>① 「임시 저장」</b>을 누릅니다</li>
+    <li>「저장」 줄 오른쪽 <b>② 폴더 단추</b>를 누릅니다</li>
+  </ol>
+
+  <h2><span class="num">3</span>이 주소를 붙여 넣고 「폴더 선택」</h2>
+  <p>뜨는 창 <b>맨 위 주소칸</b>을 누르고 아래 글을 붙여 넣은 뒤 <b>엔터</b> → <b>「폴더 선택」</b> → 캡컷 설정 창의 <b>「저장」</b>을 누릅니다.</p>
+  <div class="pathbox">
+    <pre><code id="capcut-path">%LOCALAPPDATA%\CapCut\User Data\Projects\com.lveditor.draft</code></pre>
+    <button type="button" id="capcut-copy">주소 복사</button>
+  </div>
+  <p class="small">사용자 이름은 넣지 않아도 됩니다. 윈도우가 이 컴퓨터의 이름으로 알아서 바꿉니다.</p>
+  <!-- CAPCUT-PICKER-FIGURE -->
+
+  <h2><span class="num">4</span>캡컷을 껐다가 다시 켭니다</h2>
+  <p>다시 켜면 캡컷이 그 폴더를 살펴보고 <b>프로그램으로 만든 영상들을 목록에 다시 올립니다.</b></p>
+
+  <div class="warn">
+    <b>「동영상」 폴더 안의 영상 폴더는 옮기거나 이름을 바꾸지 마세요.</b><br>
+    캡컷이 그 자리에서 영상 조각을 불러옵니다. 옮기면 캡컷에서 영상이 빨갛게 비어 보입니다.
+  </div>
+
+  <h3>그래도 안 보이면</h3>
+  <ol>
+    <li>파일 탐색기(윈도우키 + E) 오른쪽 위 검색칸에 영상을 만든 <b>날짜</b>를 넣습니다 — 예: 2026년 10월 16일이면 <code>261016</code></li>
+    <li><b>「261016_1912_제목_KR」</b>처럼 날짜로 시작하는 폴더가 나오면, 그 폴더가 <b>들어 있는 위쪽 폴더</b>를 3번처럼 「저장」으로 고릅니다</li>
+    <li>캡컷을 껐다 켭니다</li>
+  </ol>
+  </div>
+
 <footer>© RAION · <a href="./">다운로드 페이지</a>
     · <a href="https://raion-log.github.io/uv/">UV 제품 허브</a></footer>
 </main>
 <script>
 // 탭 — 주소 끝 #storage 로 바로 열 수 있게(카톡방에 「저장공간」 탭 링크를 바로 줄 수 있다)
 (function () {
-  const tabs = [["install", "tab-install", "pane-install"], ["storage", "tab-storage", "pane-storage"]];
+  const tabs = [["install", "tab-install", "pane-install"], ["storage", "tab-storage", "pane-storage"], ["capcut", "tab-capcut", "pane-capcut"]];
   function show(key) {
     for (const [k, t, p] of tabs) {
       const on = k === key;
@@ -299,7 +356,15 @@ footer a{color:#7b8199}
   for (const [k, t] of tabs) {
     document.getElementById(t).addEventListener("click", () => { history.replaceState(null, "", "#" + k); show(k); });
   }
-  show(location.hash === "#storage" ? "storage" : "install");
+  show(location.hash === "#storage" ? "storage" : location.hash === "#capcut" ? "capcut" : "install");
+  // 캡컷 주소 복사 — 막히면(옛 브라우저·권한) 글자를 골라 두고 Ctrl+C 를 알린다
+  const cb = document.getElementById("capcut-copy");
+  if (cb) cb.addEventListener("click", async () => {
+    const el = document.getElementById("capcut-path");
+    try { await navigator.clipboard.writeText(el.textContent); cb.textContent = "복사했습니다"; }
+    catch { const r = document.createRange(); r.selectNodeContents(el); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); cb.textContent = "Ctrl+C 로 복사하세요"; }
+    setTimeout(() => { cb.textContent = "주소 복사"; }, 2500);
+  });
 })();
 </script>
 </body>
